@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./l">
+    <link rel="stylesheet" href="./lib/bootstrap.css">
 </head>
 
 <body>
@@ -19,7 +19,11 @@
                 <th>姓名</th>
             </thead>
             <tbody>
-                <tr v-for="(item, index) in list">
+                <!-- 官方建议:只要用到了v-for指令,那么一定要绑定一个 :key 属性  -->
+                <!-- 而且,尽量把id作为key的值 -->
+                <!-- 官方对key的值类型是有要求的:字符串或数字类型 -->
+                <!-- key值千万不能重复 -->
+                <tr v-for="(item, index) in list" ::key="item.id" :title="item.name+index">
                     <td>{{index}}</td>
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
