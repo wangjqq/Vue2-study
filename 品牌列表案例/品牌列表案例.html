@@ -63,7 +63,7 @@
               <label class="custom-control-label" :for="'cb'+item.id" v-else>已禁用</label>
             </div>
           </td>
-          <td>{{item.time}}</td>
+          <td>{{item.time|dateFormat}}</td>
           <td>
             <a href="javascript:;" @click="remove(item.id)">删除</a>
           </td>
@@ -72,7 +72,14 @@
     </table>
   </div>
   <script src="./lib/vue-2.6.12.js"></script>
+  <script src="./lib/dayjs.min.js"></script>
   <script>
+    // 声明格式化时间的全局过滤器
+    Vue.filter('dateFormat', function (time) {
+      // 1.对time进行格式化处理,得到YYYY-MM-DD HH:mm:ss
+      return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+      // 2.把格式化的结果,return出去
+    })
     const vm = new Vue({
       el: '#app',
       data: {
