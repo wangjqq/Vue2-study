@@ -1,3 +1,7 @@
 <template>
-  <h1>App.vue组件</h1>
+  <div>
+    <p>aaa</p>
+    <p>bbb</p>
+    <p>ccc</p>
+  </div>
 </template>
