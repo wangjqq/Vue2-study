@@ -1,6 +1,9 @@
 <template>
   <div class="app-container">
-    <h1>App 根组件</h1>
+    <h1 v-color="color">App 根组件</h1>
+    <p v-color="'red'">测试</p>
+
+    <button @click="color = 'green'">改变 color 的颜色值</button>
     <hr />
     <Article>
       <template #title="scope">
@@ -39,9 +42,34 @@
 import Left from "@/components/Left.vue";
 import Article from "@/components/Article.vue";
 export default {
+  data() {
+    return {
+      color: "blue",
+    };
+  },
   components: {
     Left,
     Article,
+  },
+  // 私有自定义指令的节点
+  directives: {
+    // 定义名为 color 的指令,指向一个配置对象
+    // color: {
+    //   // 当指令第一次被绑定到元素上的时候,会立即触发 bind 函数
+    //   // 形参中的 el 表示当前指令所绑定到的那个 DOM 对象
+    //   bind(el, binding) {
+    //     console.log(binding);
+    //     el.style.color = binding.value;
+    //   },
+    //   // 在 DOM 更新的时候,会触发 update 函数
+    //   update(el, binding) {
+    //     el.style.color = binding.value;
+    //   },
+    // },
+    // 简化后的结果
+    // color(el, binding) {
+    //   el.style.color = binding.value;
+    // },
   },
 };
 </script>
